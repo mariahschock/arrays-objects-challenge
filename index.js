@@ -32,14 +32,25 @@ export const printUserInfo = ({ username, name: {first, last}, info: {favorites:
 // REQS: use rest parameters
 //  getSum(1, 2, 3) === 6
 //  getSum(1, 2, 3, 4, 5) === 15
-export const getSum = () => {...getSum}
+export const getSum = (...getSum) => {
+  let total = 0;
+  for (const sum of getSum) {
+    total += sum;
+  }
+  return total;
+}
 
 // INPUT: an unknown number of arguments
 // OUTPUT: an array with the first two arguments destructured and the remaining in a nested array
 // REQS: use rest parameters
 // getFirstTwoArgs(1, 2, 3, 4, 5) should return [1, 2, [3, 4, 5]]
 // getFirstTwoArgs('a', 'b', 'c', 'd') should return ['a', 'b', ['c', 'd']]
-export const getFirstTwoArgs = () => {}
+export const getFirstTwoArgs = (...rest) => {
+  let arrayOne = [...rest].slice(0, 2)
+  let arrayTwo = [...rest].slice(2)
+
+  return [...arrayOne, arrayTwo];
+}
 
 // INPUT: an object with the following structure
 // {
